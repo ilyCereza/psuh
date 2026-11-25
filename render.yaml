@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: fakestore-pwa-push-server
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: VAPID_SUBJECT
+        value: mailto:admin@fakestore-pwa.local
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
